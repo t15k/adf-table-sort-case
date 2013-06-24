@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelStretchLayout id="psl1">
+          <f:facet name="bottom"/>
+          <f:facet name="center">
+            <af:panelCollection id="pc1"
+                                featuresOff="formatMenu showAsTopMenuItem scrollToFirstMenuItem scrollToLastMenuItem freeze wrap statusBar">
+              <f:facet name="menus"/>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.EmployeesView11.collectionModel}" var="row"
+                        rows="#{bindings.EmployeesView11.rangeSize}"
+                        emptyText="#{bindings.EmployeesView11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.EmployeesView11.rangeSize}" rowBandingInterval="0"
+                        queryListener="#{bindings.EmployeesView11Query.processQuery}"
+                        varStatus="vs" selectedRowKeys="#{bindings.EmployeesView11.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.EmployeesView11.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t1" columnSelection="multiple">
+                <af:column sortProperty="EmployeeId" sortable="true"
+                           headerText="#{bindings.EmployeesView11.hints.EmployeeId.label}" id="c3">
+                  <af:outputText value="#{row.EmployeeId}" id="ot2">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.EmployeesView11.hints.EmployeeId.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="FirstName" sortable="true"
+                           headerText="#{bindings.EmployeesView11.hints.FirstName.label}" id="c2">
+                  <af:outputText value="#{row.FirstName}" id="ot1"/>
+                </af:column>
+                <af:column sortProperty="LastName" sortable="false"
+                           headerText="#{bindings.EmployeesView11.hints.LastName.label}" id="c1">
+                  <af:outputText value="#{row.LastName}" id="ot3"/>
+                </af:column>
+                <af:column sortProperty="Email" sortable="true"
+                           headerText="#{bindings.EmployeesView11.hints.Email.label}" id="c4">
+                  <af:outputText value="#{row.Email}" id="ot4"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </f:facet>
+          <f:facet name="start"/>
+          <f:facet name="end"/>
+          <f:facet name="top">
+          <af:group id="g1">
+            <af:outputText value="Created with JDeveloper 11.1.1.6.0. "
+                           id="ot6"/>
+            <af:outputText value="To trigger the sort bug. Right click the LastName column header, then select one of the sort options. This triggers sorting, even though sorting is disabled for that column."
+                           id="ot5"/>
+            </af:group>
+          </f:facet>
+        </af:panelStretchLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>
